@@ -1,3 +1,5 @@
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -5,6 +7,8 @@ import org.junit.rules.TestName;
 import sprint2.collections.ArrayIteratorViewer;
 import sprint2.exceptions.MyArrayDataException;
 import sprint2.exceptions.MySizeArrayException;
+import sprint2.fireandice.Repository;
+import sprint2.fireandice.models.Sample;
 
 public class Sprint2Test {
     @Rule
@@ -50,4 +54,33 @@ public class Sprint2Test {
         Assert.assertEquals(arrayIteratorViewer.resultToPrint(), "repeated:give=2;hello=2;java=3");
     }
 
+    @Test
+    public void gsonSampleSlugTest() {
+        System.out.println("Test of " + name.getMethodName() + ": OK");
+
+        Gson gson = new GsonBuilder().create();
+        Sample ex = gson.fromJson(Repository.sampleJson(), Sample.class);
+
+        Assert.assertEquals(ex.slug, "privet-mir");
+    }
+
+    @Test
+    public void gsonSamplePhraseTest() {
+        System.out.println("Test of " + name.getMethodName() + ": OK");
+
+        Gson gson = new GsonBuilder().create();
+        Sample ex = gson.fromJson(Repository.sampleJson(), Sample.class);
+
+        Assert.assertEquals(ex.phrase, "hello world!!!");
+    }
+
+    @Test
+    public void gsonSampleLexicalReduplicationTest() {
+        System.out.println("Test of " + name.getMethodName() + ": OK");
+
+        Gson gson = new GsonBuilder().create();
+        Sample ex = gson.fromJson(Repository.sampleJson(), Sample.class);
+
+        Assert.assertEquals(ex.lexicalReduplication, "hello-huylo, world-huyeld");
+    }
 }
