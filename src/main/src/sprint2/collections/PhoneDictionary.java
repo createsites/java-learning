@@ -33,6 +33,6 @@ public class PhoneDictionary implements IDictionary {
 
     private Long generatePhones() {
         // TODO: Реализовать генерацию номера телефона, т.е. номер из 11 цифр, начинающийся с 7
-        return 0l;
+        return 0L;
     }
 }

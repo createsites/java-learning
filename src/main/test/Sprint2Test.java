@@ -5,6 +5,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
 import sprint2.collections.ArrayIteratorViewer;
+import sprint2.collections.interfaces.IViewer;
 import sprint2.exceptions.MyArrayDataException;
 import sprint2.exceptions.MySizeArrayException;
 import sprint2.fireandice.Repository;
@@ -49,7 +50,7 @@ public class Sprint2Test {
         System.out.println("Test of " + name.getMethodName() + ": OK");
 
         String[] arr = {"hello", "world", "check", "java", "give", "fuck", "punisher :)", "java", "do", "it", "from", "another", "give", "hello", "java", "cool"};
-        ArrayIteratorViewer arrayIteratorViewer = new ArrayIteratorViewer(arr);
+        IViewer arrayIteratorViewer = new ArrayIteratorViewer(arr);
 
         Assert.assertEquals(arrayIteratorViewer.resultToPrint(), "repeated:give=2;hello=2;java=3");
     }

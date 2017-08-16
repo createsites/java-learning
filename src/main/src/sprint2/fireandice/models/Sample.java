@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by aleksejskrobot on 15.08.17.
  */
+
 public class Sample {
 
     @SerializedName("slug")
