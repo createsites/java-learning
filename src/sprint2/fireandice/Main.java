@@ -1,16 +1,22 @@
 package sprint2.fireandice;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import sprint2.fireandice.models.Sample;
+import sprint2.fireandice.models.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        Gson gson = new GsonBuilder().create();
-        Sample ex = gson.fromJson(Repository.sampleJson(), Sample.class);
 
-        System.out.println(ex.toString());
+        Root root = new Root();
+        System.out.println(root.toString());
+
+        /*Book book = gson.fromJson(Repository.book(1), Book.class);
+        System.out.println(book.toString());
+
+        Character character = gson.fromJson(Repository.characters(1), Character.class);
+        System.out.println(character.toString());
+
+        House house = gson.fromJson(Repository.houses(1), House.class);
+        System.out.println(house.toString());*/
     }
 
 }

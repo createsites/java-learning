@@ -21,10 +21,10 @@ public class Sample {
 
     @Override
     public String toString() {
-        return "Sample{" +
-                "slug=" + slug +
-                ", phrase='" + phrase + '\'' +
-                ", lexicalReduplication='" + lexicalReduplication + '\'' +
+        return "Sample {" + "\n" +
+                "slug : " + slug + "\n" +
+                "phrase : '" + phrase + '\'' + "\n" +
+                "lexicalReduplication : '" + lexicalReduplication + '\'' + "\n" +
                 '}';
     }
 }
