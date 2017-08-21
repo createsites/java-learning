@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
 import sprint2.collections.ArrayIteratorViewer;
+import sprint2.collections.PhoneDictionary;
+import sprint2.collections.interfaces.IDictionary;
 import sprint2.collections.interfaces.IViewer;
 import sprint2.exceptions.ArrayTransform;
 import sprint2.exceptions.MyArrayDataException;
@@ -16,11 +18,14 @@ import sprint2.exceptions.MySizeArrayException;
 import sprint2.fireandice.Repository;
 import sprint2.fireandice.models.Sample;
 
+import java.util.ArrayList;
+
 @RunWith(DataProviderRunner.class)
 public class Sprint2Test {
     @Rule
     public TestName name = new TestName();
 
+    // playing with data provider
     // правильные массивы для теста 4х4
     @DataProvider
     public static Object[][] fourByfourArrayCorrectProvider() {
@@ -126,6 +131,52 @@ public class Sprint2Test {
         IViewer arrayIteratorViewer = new ArrayIteratorViewer(arr);
 
         Assert.assertEquals(arrayIteratorViewer.resultToPrint(), "repeated:give=2;hello=2;java=3");
+    }
+
+    // проверка сгенерированных телефонов на кол-во символов
+    @Test
+    public void phonesGeneratorTest() {
+        System.out.println("Test of " + name.getMethodName() + ": OK");
+
+        final int iterations = 20;
+        final int phoneLength = 11; // кол-во символов в номере телефона
+        int phonesLengsSum = 0;
+
+        for (Long phone : new PhoneDictionary().generateTestPhones(iterations)) {
+            int length = (int)Math.ceil(Math.log10(phone));
+            phonesLengsSum += length;
+            System.out.println(phone + " : length " + length);
+        }
+        Assert.assertEquals(phonesLengsSum, phoneLength * iterations);
+    }
+
+    // проверка что добавляется несколько телефонов к одной фамилии
+    @Test
+    public void oneSurnamePhonesAddingTest() {
+        System.out.println("Test of " + name.getMethodName() + ": OK");
+
+        IDictionary dictionary = new PhoneDictionary();
+        dictionary.add("Jones", 79089980808L);
+        Assert.assertEquals(3, dictionary.find("Jones").size());
+    }
+
+    // добавление номера, поиск номера
+    @Test
+    public void phonesFindTest() {
+        System.out.println("Test of " + name.getMethodName() + ": OK");
+
+        IDictionary dictionary = new PhoneDictionary();
+        dictionary.add("Tester", 79089980808L);
+        Assert.assertEquals(79089980808L, (long)dictionary.find("Tester").get(0));
+    }
+
+    // поиск по несуществующей фамилии
+    @Test
+    public void notExistingNamePhonesFindTest() {
+        System.out.println("Test of " + name.getMethodName() + ": OK");
+
+        IDictionary dictionary = new PhoneDictionary();
+        Assert.assertEquals(new ArrayList<Long>(), dictionary.find("Tester"));
     }
 
     @Test
