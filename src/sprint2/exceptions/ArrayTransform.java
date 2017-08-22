@@ -21,7 +21,7 @@ public class ArrayTransform {
             }
         }
         if (arr.length != ROWS_CNT || ! colsCorrect) {
-            throw new MySizeArrayException("Неверный формат массива");
+            throw new MySizeArrayException();
         }
 
         arrayResult = arr.clone();
@@ -40,7 +40,7 @@ public class ArrayTransform {
                 try {
                     arrayNumbers[i][j] = Integer.parseInt(arrayResult[i][j]);
                 } catch (NumberFormatException nfe) {
-                    throw new MyArrayDataException("Не интовое значение в ячейке: arr[" + i + "][" + j + "]");
+                    throw new MyArrayDataException(i, j);
                 }
             }
         }

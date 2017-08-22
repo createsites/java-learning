@@ -2,7 +2,7 @@ package sprint2.exceptions;
 
 public class MyArrayDataException extends Exception {
 
-    public MyArrayDataException(String var1) {
-        super(var1);
+    public MyArrayDataException(int i, int j) {
+        super("Не интовое значение в ячейке: arr[" + i + "][" + j + "]");
     }
 }
