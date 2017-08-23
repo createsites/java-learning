@@ -1,8 +1,7 @@
 package sprint2.collections;
 
 import sprint2.collections.interfaces.IViewer;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class ArrayIteratorViewer implements IViewer {
 
@@ -39,15 +38,15 @@ public class ArrayIteratorViewer implements IViewer {
         builder.append("repeated:");
         // считаем кол-во вхождений для всех слов
         Map<String, Integer> duplicateWords = countWords();
-        // записываем в строку для вывода
+        // формируем массив строк "дублирующееся_слово=кол-во_повторений"
+        List<String> tmp = new LinkedList<>();
         for (Map.Entry<String, Integer> entry : duplicateWords.entrySet()) {
             // откидываем слова, которые не дублируются
             if (entry.getValue() > 1) {
-                builder.append(entry.getKey() + "=" + entry.getValue() + ";");
+                tmp.add(entry.getKey() + "=" + entry.getValue());
             }
         }
-        // TODO RAKAMAZAFAKA!
-        // убираем точку с запятой в конце
-        builder.setLength(builder.length() - 1);
+        // записываем в строку для вывода, разделяя строки ;
+        builder.append(String.join(";", tmp));
     }
 }
