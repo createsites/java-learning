@@ -10,7 +10,7 @@ public class Main {
         // массив слов
         IViewer words = new ArrayIteratorViewer(
             new String[] {
-                "taranov", "popov", "ilin", "unique phrase", "asshole", "asshole", "asshole", "type names in nex items", "taranov", "popov"
+                "ivanov", "petrov", "sidorov", "unique phrase", "employer", "employer", "employer", "unique phrase too", "ivanov", "petrov"
             }
         );
         System.out.println(words.resultToPrint());

@@ -101,7 +101,6 @@ public class Sprint2Test {
 
     @Test
     @UseDataProvider("fourByfourArrayCorrectProvider")
-    // TODO здесь throws писать надо ли?
     public void fourByfourArraySumTest(int sum, String[][] arrData) throws MyArrayDataException, MySizeArrayException {
         System.out.println("Test of " + name.getMethodName() + ": OK");
         Assert.assertEquals(sum, new ArrayTransform().getSum(arrData));
@@ -109,7 +108,6 @@ public class Sprint2Test {
 
     @Test(expected = MySizeArrayException.class)
     @UseDataProvider("fourByfourArrayIncorrectSizeProvider")
-    // TODO здесь throws писать надо ли?
     public void fourByfourArraySizeTest(String[][] arrData) throws MyArrayDataException, MySizeArrayException {
         System.out.println("Test of " + name.getMethodName() + ": OK");
         new ArrayTransform().getSum(arrData);
@@ -117,7 +115,6 @@ public class Sprint2Test {
 
     @Test(expected = MyArrayDataException.class)
     @UseDataProvider("fourByfourArrayIncorrectDataProvider")
-    // TODO здесь throws писать надо ли?
     public void fourByfourArrayDataTest(String[][] arrData) throws MyArrayDataException, MySizeArrayException {
         System.out.println("Test of " + name.getMethodName() + ": OK");
         new ArrayTransform().getSum(arrData);
@@ -145,7 +142,6 @@ public class Sprint2Test {
         for (Long phone : new PhoneDictionary().generateTestPhones(iterations)) {
             int length = (int)Math.ceil(Math.log10(phone));
             phonesLengsSum += length;
-            System.out.println(phone + " : length " + length);
         }
         Assert.assertEquals(phonesLengsSum, phoneLength * iterations);
     }
