@@ -1,4 +1,6 @@
-package sprint2.try_dagger;
+package sprint2.tryDagger;
+
+import javax.inject.Inject;
 
 public class WeatherReporter {
 
@@ -9,6 +11,7 @@ public class WeatherReporter {
 
     // инжектит объекты WeatherService, LocationManager
     // должна быть аннотация @Inject в конструкторах WeatherService и LocationManager
+    @Inject
     public WeatherReporter(WeatherService weatherService,
                            LocationManager locationManager) {
         this.weatherService = weatherService;

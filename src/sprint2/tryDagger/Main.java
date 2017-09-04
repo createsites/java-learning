@@ -1,4 +1,4 @@
-package sprint2.try_dagger;
+package sprint2.tryDagger;
 
 
 public class Main {
