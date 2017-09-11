@@ -1,12 +1,8 @@
 package sprint2.fireandice.models;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-import sprint2.fireandice.Repository;
+import sprint2.fireandice.RemoteRepository;
 
-import java.util.List;
+import javax.inject.Inject;
 
 public class Root {
 
@@ -14,12 +10,13 @@ public class Root {
     private Character characters;
     private House houses;
 
-    public Root() {
-        Gson gson = new GsonBuilder().create();
+    @Inject
+    // dagger позволяет избежать конструкции RemoteRepository repo = new RemoteRepository();
+    public Root(RemoteRepository repo) {
 
-        books = gson.fromJson(Repository.book(1), Book.class);
-        characters = gson.fromJson(Repository.characters(1), Character.class);
-        houses = gson.fromJson(Repository.houses(1), House.class);
+        books = repo.book(1);
+        characters = repo.character(583);
+        houses = repo.house(378);
     }
 
     @Override

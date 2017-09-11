@@ -204,4 +204,11 @@ public class Sprint2Test {
 
         Assert.assertEquals(ex.lexicalReduplication, "hello-huylo, world-huyeld");
     }
+
+    @Test
+    public void gsonSampleLexicalReduplicationTest___() {
+        System.out.println("Test of " + name.getMethodName() + ": OK");
+
+
+    }
 }
