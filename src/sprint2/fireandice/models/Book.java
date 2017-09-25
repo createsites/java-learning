@@ -1,7 +1,10 @@
 package sprint2.fireandice.models;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import sprint2.fireandice.Repository;
 
 import java.util.List;
 
@@ -9,36 +12,59 @@ public class Book {
 
     @SerializedName("url")
     @Expose
-    public String url;
+    private String url;
     @SerializedName("name")
     @Expose
-    public String name;
+    private String name;
     @SerializedName("isbn")
     @Expose
-    public String isbn;
+    private String isbn;
     @SerializedName("authors")
     @Expose
-    public List<String> authors = null;
+    private List<String> authors = null;
     @SerializedName("numberOfPages")
     @Expose
-    public int numberOfPages;
+    private int numberOfPages;
     @SerializedName("publisher")
     @Expose
-    public String publisher;
+    private String publisher;
     @SerializedName("country")
     @Expose
-    public String country;
+    private String country;
     @SerializedName("mediaType")
     @Expose
-    public String mediaType;
+    private String mediaType;
     @SerializedName("released")
     @Expose
-    public String released;
-    @SerializedName("characters")
+    private String released;
+    /*@SerializedName("characters")
     @Expose
-    public List<String> characters = null;
+    private List<String> characters = null;*/
+
+    private Character character;
+
     @SerializedName("povCharacters")
     @Expose
-    public List<String> povCharacters = null;
+    private List<String> povCharacters = null;
 
+    public Book() {
+        character = new GsonBuilder().create().fromJson(Repository.characters(1), Character.class);
+    }
+
+    @Override
+    public String toString() {
+        return "Book {" + "\n" +
+                "url : " + url + "\n" +
+                "name : " + name + "\n" +
+                "isbn : " + isbn + "\n" +
+                "authors : " + authors + "\n" +
+                "numberOfPages : " + numberOfPages + "\n" +
+                "publisher : " + publisher + "\n" +
+                "country : " + country + "\n" +
+                "mediaType : " + mediaType + "\n" +
+                "released : " + released + "\n" +
+                "character : " + character + "\n" +
+                "povCharacters : " + povCharacters + "\n" +
+                '}';
+    }
 }

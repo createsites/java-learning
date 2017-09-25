@@ -1,16 +1,17 @@
 package sprint2.fireandice;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import sprint2.fireandice.models.Sample;
+import sprint2.fireandice.models.*;
+
+import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) {
-        Gson gson = new GsonBuilder().create();
-        Sample ex = gson.fromJson(Repository.sampleJson(), Sample.class);
 
-        System.out.println(ex.toString());
+        // строим graph зависимости для dagger
+        FireandiceComponent component = DaggerFireandiceComponent.create();
+        Root root = component.getRoot();
+        System.out.println(root.toString());
     }
 
 }
